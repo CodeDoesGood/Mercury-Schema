@@ -16,10 +16,10 @@ CREATE TABLE `volunteer` (
 	`slack_id` INT,
 	`github_id` INT,
 	`developer_level` INT,
-	`admin_portal_access` bool NOT NULL DEFAULT 'false',
+	`admin_portal_access` bool NOT NULL DEFAULT false,
 	`admin_overall_level` INT,
 	`salt` TEXT NOT NULL,
-	`verified` bool NOT NULL DEFAULT 'false',
+	`verified` bool NOT NULL DEFAULT false,
 	PRIMARY KEY (`volunteer_id`)
 );
 
@@ -146,7 +146,7 @@ CREATE TABLE `project` (
 	`title` TEXT NOT NULL,
 	`status` INT NOT NULL,
 	`project_category` INT NOT NULL,
-	`hidden` bool NOT NULL DEFAULT 'false',
+	`hidden` bool NOT NULL DEFAULT false,
 	`image_directory` TEXT,
 	`description` TEXT,
 	`summary` TEXT,
