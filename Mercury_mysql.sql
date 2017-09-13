@@ -33,7 +33,7 @@ CREATE TABLE `position` (
 CREATE TABLE `volunteer_status_types` (
 	`volunteer_status_types_id` INT NOT NULL AUTO_INCREMENT,
 	`type` varchar(10) NOT NULL,
-	`description` TEXT NOT NULL AUTO_INCREMENT,
+	`description` TEXT NOT NULL,
 	PRIMARY KEY (`volunteer_status_types_id`)
 );
 
@@ -170,7 +170,7 @@ CREATE TABLE `project_status` (
 );
 
 CREATE TABLE `project_category` (
-	`project_category_id` INT NOT NULL AUTO_INCREMENT DEFAULT ' ',
+	`project_category_id` INT NOT NULL AUTO_INCREMENT,
 	`name` TEXT NOT NULL DEFAULT ' ',
 	`description` TEXT NOT NULL DEFAULT ' ',
 	PRIMARY KEY (`project_category_id`)
