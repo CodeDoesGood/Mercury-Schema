@@ -365,7 +365,7 @@ CREATE TABLE `project_suggestion_form` (
 CREATE TABLE `verification_code` (
 	`verification_code_id` INT NOT NULL,
 	`code` TEXT NOT NULL,
-	`data_entry_date` DATE NOT NULL,
+	`creation_date` DATE NOT NULL,
 	`salt` TEXT NOT NULL,
 	PRIMARY KEY (`verification_code_id`)
 );
