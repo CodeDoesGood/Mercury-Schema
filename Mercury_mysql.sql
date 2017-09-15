@@ -370,6 +370,14 @@ CREATE TABLE `verification_code` (
 	PRIMARY KEY (`verification_code_id`)
 );
 
+CREATE TABLE `password_reset_code` (
+	`password_reset_code_id` INT NOT NULL,
+	`code` TEXT NOT NULL,
+	`created_datetime` DATETIME NOT NULL,
+	`salt` TEXT NOT NULL,
+	PRIMARY KEY (`password_reset_code_id`)
+);
+
 ALTER TABLE `volunteer` ADD CONSTRAINT `volunteer_fk0` FOREIGN KEY (`position_id`) REFERENCES `position`(`position_id`);
 
 ALTER TABLE `volunteer` ADD CONSTRAINT `volunteer_fk1` FOREIGN KEY (`volunteer_status`) REFERENCES `volunteer_status_types`(`volunteer_status_types_id`);
@@ -477,3 +485,5 @@ ALTER TABLE `entrollment_form` ADD CONSTRAINT `entrollment_form_fk5` FOREIGN KEY
 ALTER TABLE `project_suggestion_form` ADD CONSTRAINT `project_suggestion_form_fk0` FOREIGN KEY (`data_entry_user_id`) REFERENCES `volunteer`(`volunteer_id`);
 
 ALTER TABLE `verification_code` ADD CONSTRAINT `verification_code_fk0` FOREIGN KEY (`verification_code_id`) REFERENCES `volunteer`(`volunteer_id`);
+
+ALTER TABLE `password_reset_code` ADD CONSTRAINT `password_reset_code_fk0` FOREIGN KEY (`password_reset_code_id`) REFERENCES `volunteer`(`volunteer_id`);
