@@ -79,7 +79,7 @@ CREATE TABLE `volunteer_announcement` (
 	`announcement` INT NOT NULL,
 	`volunteer_id` INT NOT NULL,
 	`read` bool NOT NULL,
-	`read_date` DATETIME NOT NULL,
+	`read_date` DATETIME,
 	PRIMARY KEY (`volunteer_announcement_id`)
 );
 
