@@ -25,14 +25,14 @@ CREATE TABLE `volunteer` (
 
 CREATE TABLE `position` (
 	`position_id` INT NOT NULL AUTO_INCREMENT,
-	`name` enum("admin", "Developer") NOT NULL,
+	`name` enum("Developer", "Designer", "Administrator", "Volunteer", "Moderator") NOT NULL,
 	`description` TEXT NOT NULL,
 	PRIMARY KEY (`position_id`)
 );
 
 CREATE TABLE `volunteer_status_types` (
 	`volunteer_status_types_id` INT NOT NULL AUTO_INCREMENT,
-	`type` enum("active", "offline", "left") NOT NULL,
+	`type` enum("Active", "Offline", "Left") NOT NULL,
 	`description` TEXT NOT NULL,
 	PRIMARY KEY (`volunteer_status_types_id`)
 );
@@ -96,7 +96,7 @@ CREATE TABLE `announcement` (
 
 CREATE TABLE `announcement_type` (
 	`announcement_type_id` INT NOT NULL AUTO_INCREMENT,
-	`type` enum("volunteer", "site") NOT NULL,
+	`type` enum("Volunteer", "Site") NOT NULL,
 	`description` TEXT NOT NULL,
 	PRIMARY KEY (`announcement_type_id`)
 );
@@ -122,7 +122,7 @@ CREATE TABLE `project_activity_announcement` (
 
 CREATE TABLE `project_announcement_type` (
 	`project_announcement_type_id` INT NOT NULL AUTO_INCREMENT,
-	`type` enum("success", "error") NOT NULL,
+	`type` enum("Success", "Error") NOT NULL,
 	`description` TEXT NOT NULL,
 	PRIMARY KEY (`project_announcement_type_id`)
 );
@@ -144,7 +144,7 @@ CREATE TABLE `project` (
 	`created_datetime` DATETIME NOT NULL,
 	`data_entry_user_id` INT NOT NULL,
 	`title` TEXT NOT NULL,
-	`status` INT NOT NULL,
+	`status` varchar(20) NOT NULL,
 	`project_category` INT NOT NULL,
 	`hidden` bool NOT NULL DEFAULT false,
 	`image_directory` TEXT,
@@ -162,14 +162,14 @@ CREATE TABLE `activity_type` (
 
 CREATE TABLE `project_status` (
 	`project_status_id` INT NOT NULL AUTO_INCREMENT,
-	`status` enum("online", "offline") NOT NULL,
+	`status` enum("Online", "Offline") NOT NULL,
 	`description` TEXT NOT NULL,
 	PRIMARY KEY (`project_status_id`)
 );
 
 CREATE TABLE `project_category` (
 	`project_category_id` INT NOT NULL AUTO_INCREMENT,
-	`name` enum("web", "ios", "android", "local", "worldwide") NOT NULL,
+	`category` enum("Web", "IOS", "Android", "Local", "Worldwide") NOT NULL,
 	`description` TEXT NOT NULL,
 	PRIMARY KEY (`project_category_id`)
 );
@@ -189,7 +189,7 @@ CREATE TABLE `project_team_request` (
 
 CREATE TABLE `request_status` (
 	`request_status_id` INT NOT NULL AUTO_INCREMENT,
-	`name` enum("complete", "processing") NOT NULL,
+	`status` enum("Complete", "Processing") NOT NULL,
 	`description` TEXT NOT NULL,
 	PRIMARY KEY (`request_status_id`)
 );
@@ -220,7 +220,7 @@ CREATE TABLE `project_sub_activity` (
 
 CREATE TABLE `platform` (
 	`platform_id` INT NOT NULL AUTO_INCREMENT,
-	`name` enum("web", "android", "ios") NOT NULL,
+	`platform` enum("Web", "Android", "IOS") NOT NULL,
 	`description` TEXT NOT NULL,
 	PRIMARY KEY (`platform_id`)
 );
@@ -240,14 +240,14 @@ CREATE TABLE `project_team` (
 
 CREATE TABLE `member_role` (
 	`member_role_id` INT NOT NULL AUTO_INCREMENT,
-	`role` enum("admin", "developer", "trainer") NOT NULL,
+	`role` enum("Admin", "Developer", "Trainer") NOT NULL,
 	`description` TEXT NOT NULL,
 	PRIMARY KEY (`member_role_id`)
 );
 
 CREATE TABLE `member_status` (
 	`member_status_id` INT NOT NULL AUTO_INCREMENT,
-	`status` enum("active", "offline") NOT NULL,
+	`status` enum("Active", "Offline") NOT NULL,
 	`description` TEXT NOT NULL,
 	PRIMARY KEY (`member_status_id`)
 );
@@ -278,7 +278,7 @@ CREATE TABLE `volunteer_reports` (
 
 CREATE TABLE `developer_level` (
 	`developer_level_id` INT NOT NULL AUTO_INCREMENT,
-	`level` enum("basic", "average", "advanced") NOT NULL,
+	`level` enum("Basic", "Average", "Advanced") NOT NULL,
 	`description` TEXT NOT NULL,
 	PRIMARY KEY (`developer_level_id`)
 );
@@ -292,21 +292,21 @@ CREATE TABLE `report_volunteer_type` (
 
 CREATE TABLE `report_volunteer_interest` (
 	`report_volunteer_interest_id` INT NOT NULL AUTO_INCREMENT,
-	`name` enum("volunteering", "developing", "designing") NOT NULL,
+	`interest` enum("Volunteering", "Developing", "Designing") NOT NULL,
 	`description` TEXT NOT NULL,
 	PRIMARY KEY (`report_volunteer_interest_id`)
 );
 
 CREATE TABLE `developer_type` (
 	`developer_type_id` INT NOT NULL AUTO_INCREMENT,
-	`type` enum("web", "android", "ios") NOT NULL,
+	`type` enum("Web", "Android", "IOS") NOT NULL,
 	`description` TEXT NOT NULL,
 	PRIMARY KEY (`developer_type_id`)
 );
 
 CREATE TABLE `joining_reason` (
 	`joining_reason_id` INT NOT NULL AUTO_INCREMENT,
-	`reason` enum("volunteer", "programming", "experience") NOT NULL,
+	`reason` enum("Volunteer", "Programming", "Experience") NOT NULL,
 	`description` TEXT NOT NULL,
 	PRIMARY KEY (`joining_reason_id`)
 );
@@ -319,7 +319,7 @@ CREATE TABLE `intake_process_steps` (
 
 CREATE TABLE `role_type` (
 	`role_type_id` INT NOT NULL AUTO_INCREMENT,
-	`role` enum("Developer", "Designer", "Administrator", "Volunteer") NOT NULL,
+	`role` enum("Developer", "Designer", "Administrator", "Volunteer", "Moderator") NOT NULL,
 	`description` TEXT NOT NULL,
 	PRIMARY KEY (`role_type_id`)
 );
@@ -483,4 +483,3 @@ ALTER TABLE `project_suggestion_form` ADD CONSTRAINT `project_suggestion_form_fk
 ALTER TABLE `verification_code` ADD CONSTRAINT `verification_code_fk0` FOREIGN KEY (`verification_code_id`) REFERENCES `volunteer`(`volunteer_id`);
 
 ALTER TABLE `password_reset_code` ADD CONSTRAINT `password_reset_code_fk0` FOREIGN KEY (`password_reset_code_id`) REFERENCES `volunteer`(`volunteer_id`);
-
