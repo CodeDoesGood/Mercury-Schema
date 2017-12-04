@@ -59,6 +59,18 @@ INSERT INTO platform (platform, description) VALUES ('Web', 'The platform Web');
 INSERT INTO platform (platform, description) VALUES ('Android', 'The platform Android');
 INSERT INTO platform (platform, description) VALUES ('IOS', 'The platform IOS');
 
+INSERT INTO project (created_datetime, data_entry_user_id, title, status, project_category, hidden, image_directory, description, summary) VALUES (
+    '2017-12-04',
+    1,
+    'Helping Hands',
+    1,
+    2,
+    false,
+    '',
+    'Helping Hands',
+    'Helping Hands'
+);
+
 INSERT INTO volunteer (created_datetime, data_entry_user_id, username, password, position_id, volunteer_status, name, about, email, phone, location, timezone, linked_in_url, slack_id, github_id, developer_level, admin_portal_access, admin_overall_level, salt, verified) VALUES (
     '2001-06-22',
     1,
