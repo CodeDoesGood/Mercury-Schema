@@ -144,7 +144,7 @@ CREATE TABLE `project` (
 	`created_datetime` DATETIME NOT NULL,
 	`data_entry_user_id` INT NOT NULL,
 	`title` TEXT NOT NULL,
-	`status` varchar(20) NOT NULL,
+	`status` INT NOT NULL,
 	`project_category` INT NOT NULL,
 	`hidden` bool NOT NULL DEFAULT false,
 	`image_directory` TEXT,
