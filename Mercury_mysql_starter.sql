@@ -93,3 +93,5 @@ INSERT INTO volunteer (created_datetime, data_entry_user_id, username, password,
     'HfPXZZooAThIQpUnhs4fwDPcLtLYwI7PE5ajg59R06AX0i0QNs+HGL27z/D/FgFkC1lX4dvctqMVm3KpgtdjDnbneAsiL0mbZVM4p2TNmHsp/HEpUvF3l1BmSmMNOYiew/RTUKy/Ah5CuhN7eXLtAsUzkuI55gAasfw/FmKfEUw=',
     true);
 
+INSERT INTO announcement (data_entry_user_id, title, body, announcement_type, created_datetime, modified_datetime) VALUES (1, 'Sample Announcement', 'Sample Body', 1, '2018-01-02', '2018-01-02');
+INSERT INTO volunteer_announcement (created_datetime, data_entry_user_id, announcement, volunteer_id, `read`) VALUES ('2018-01-02', 1, 1, 1, 0);
