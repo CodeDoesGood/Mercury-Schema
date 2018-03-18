@@ -9,21 +9,20 @@ CREATE TABLE volunteer (
   NAME                TEXT         NOT NULL,
   about               TEXT,
   email               VARCHAR(200) NOT NULL UNIQUE,
-  phone               INT,
+  phone               VARCHAR(15),
   location            TEXT,
   timezone            TEXT,
-  linked_in_url       TEXT,
-  slack_id            INT,
-  github_id           INT,
+  linked_in_id        VARCHAR(50),
+  slack_id            VARCHAR(50),
+  github_id           VARCHAR(50),
+  twitter_id          VARCHAR(50),
   developer_level     INT,
   picture_url         VARCHAR(150),
   admin_portal_access BOOL         NOT NULL DEFAULT FALSE,
   admin_overall_level INT,
   salt                TEXT         NOT NULL,
   verified            BOOL         NOT NULL DEFAULT FALSE,
-  PRIMARY KEY (volunteer_id),
-  CONSTRAINT fk_position_id FOREIGN KEY (position_id) REFERENCES position (position_id),
-  CONSTRAINT fk_volunteer_status FOREIGN KEY (volunteer_status) REFERENCES volunteer_status_types (volunteer_status_types_id)
+  PRIMARY KEY (volunteer_id)
 );
 
 CREATE TABLE position (
@@ -45,7 +44,7 @@ CREATE TABLE volunteer_comment (
   data_entry_user_id INT      NOT NULL,
   receiver_id        INT      NOT NULL,
   comment_id         INT      NOT NULL,
-  read               BOOL     NOT NULL,
+  `read`             BOOL     NOT NULL,
   read_date          DATETIME NOT NULL,
   created_datetime   DATETIME NOT NULL,
   modified_datetime  DATETIME NOT NULL,
@@ -81,7 +80,7 @@ CREATE TABLE volunteer_announcement (
   data_entry_user_id        INT  NOT NULL,
   announcement              INT  NOT NULL,
   volunteer_id              INT  NOT NULL,
-  read                      BOOL NOT NULL,
+  `read`                    BOOL NOT NULL,
   read_date                 DATETIME,
   PRIMARY KEY (volunteer_announcement_id)
 );
@@ -378,6 +377,10 @@ CREATE TABLE password_reset_code (
   salt                   TEXT     NOT NULL,
   PRIMARY KEY (password_reset_code_id)
 );
+
+ALTER TABLE volunteer
+  ADD CONSTRAINT fk_position_id FOREIGN KEY (position_id) REFERENCES position (position_id),
+  ADD CONSTRAINT fk_volunteer_status FOREIGN KEY (volunteer_status) REFERENCES volunteer_status_types (volunteer_status_types_id);
 
 ALTER TABLE volunteer_comment
   ADD CONSTRAINT volunteer_comment_fk0 FOREIGN KEY (data_entry_user_id) REFERENCES volunteer (volunteer_id);
