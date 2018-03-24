@@ -363,7 +363,7 @@ CREATE TABLE project_suggestion_form (
 );
 
 CREATE TABLE verification_code (
-  verification_code_id INT  NOT NULL,
+  verification_code_id INT  NOT NULL AUTO_INCREMENT,
   code                 TEXT NOT NULL,
   created_datetime     DATE NOT NULL,
   salt                 TEXT NOT NULL,
@@ -371,11 +371,24 @@ CREATE TABLE verification_code (
 );
 
 CREATE TABLE password_reset_code (
-  password_reset_code_id INT      NOT NULL,
+  password_reset_code_id INT      NOT NULL AUTO_INCREMENT,
   code                   TEXT     NOT NULL,
   created_datetime       DATETIME NOT NULL,
   salt                   TEXT     NOT NULL,
   PRIMARY KEY (password_reset_code_id)
+);
+
+CREATE TABLE stored_email (
+  stored_id                INT      NOT NULL AUTO_INCREMENT,
+  stored_retry_count       INT      NOT NULL,
+  stored_to                TEXT     NOT NULL,
+  stored_from              TEXT NOT NULL,
+  stored_subject           TEXT     NOT NULL,
+  stored_text              TEXT     NOT NULL,
+  stored_html              TEXT     NOT NULL,
+  stored_created_datetime  DATETIME NOT NULL,
+  stored_modified_datetime DATETIME NOT NULL,
+  PRIMARY KEY (stored_id)
 );
 
 ALTER TABLE volunteer
